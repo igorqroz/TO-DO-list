@@ -1,53 +1,74 @@
-function addContato() {
-    // let novaTarefa= document.getElementById('input_nova_tarefa')
-    console.log(input_nova_tarefa.value.split(" "))
+// GET - pegar/trazer/listar
+// POST - subir/adicionar/enviar/criar
+// PUT - atualizar/alterar/
+// DELETE - apagar/deletar/destruir/remover/aniquilar
+
+async function addContato() {
+    let nomeAdd = prompt("Nome?")
+    let idadeAdd = prompt("Idade?")
+    let res = await fetch('https://633867b7937ea77bfdbf9c86.mockapi.io/pessoa/', {
+        method: "POST",
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            nome: nomeAdd,
+            idade: idadeAdd
+        })
+    })
+    console.log(res)
+    if (res.ok) {
+        console.log('adicionei')
+        atualizarContatos()
+    }
 }
 
-// atualizarContatos();
+async function atualizar(identificador) {
+    let nomeNovo = prompt("Nome?")
+    let idadeNovo = prompt("Idade?")
 
-async function atualizarContatos() {
-    // fetch('https://633867b7937ea77bfdbf9c86.mockapi.io/pessoa')// resquet/promise
-    //     .then(response => response.json())// resposta da resquest/promise
-    //     .then(body => {// resposta do resposta.json() === corpo da resquest/promise
-    //         console.log(body)
-    //         // let tarefas = document.getElementById("tarefas")// forma "normal" de fazer
-    //         tarefas.innerHTML = "<ul>"
-    //         body.forEach(pessoa => {
-    //             tarefas.innerHTML += `<li>${pessoa.nome} - ${pessoa.idade} <button onclick="deletar(${pessoa.id})">Deletar</button></li>`
-    //         });
-    //         tarefas.innerHTML += "</ul>"
-    //     })
-
-    let response = await fetch('https://633867b7937ea77bfdbf9c86.mockapi.io/pessoa')
-    let body = await response.json()
-    // let tarefas = document.getElementById("tarefas")// forma "normal" de fazer
-    tarefas.innerHTML = "<ul>"
-    body.forEach(pessoa => {
-        tarefas.innerHTML += `<li>${pessoa.nome} - ${pessoa.idade} <button onclick="deletar(${pessoa.id})">Deletar</button></li>`
-    })
-    tarefas.innerHTML += "</ul>"
-}
-async function deletar(identificador) {
-    console.log(`Deletarei o ${identificador}`)
-
-    // fetch('https://633867b7937ea77bfdbf9c86.mockapi.io/pessoa/' + identificador, {
-    //     method: 'DELETE',
-    // }).then(res => {
-    //     if (res.ok) {
-    //         console.log('Deu certo')
-    //         AtualizarContatos()
-    //     } else {
-    //         console.log('Deu erro')
-    //     }
-    // })
-
-    let response = fetch('https://633867b7937ea77bfdbf9c86.mockapi.io/pessoa/' + identificador, {
-        method: 'DELETE',
-    })
-    if (response.ok) {
+    let res = await fetch('https://633867b7937ea77bfdbf9c86.mockapi.io/pessoa/' + identificador, {
+        method: 'PUT',
+        headers: {
+            'content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            nome: nomeNovo,
+            idade: idadeNovo
+        })
+    });
+    if (res.ok) {
+        alert('Atualizou')
         atualizarContatos()
     } else {
-        console.log((await response).statusText)
+        alert('Erro ao atualizar')
     }
 
+}
+
+atualizarContatos();
+
+async function atualizarContatos() {
+    let resposta = await fetch('https://633867b7937ea77bfdbf9c86.mockapi.io/pessoa/')
+    let body = await resposta.json()
+    tarefas.innerHTML = "<ul>"
+    body.forEach(pessoa => {
+        tarefas.innerHTML += ` 
+        <li>${pessoa.nome} - ${pessoa.idade} 
+            <button onclick="deletar(${pessoa.id})">Deletar</button>
+            <button onclick="atualizar(${pessoa.id})">Atualizar</button>
+        </li>`
+    });
+    tarefas.innerHTML += "</ul>"
+}
+
+async function deletar(identificador) {
+    let res = await fetch('https://633867b7937ea77bfdbf9c86.mockapi.io/pessoa/' + identificador, {
+        method: 'DELETE',
+    });
+    if (res.ok) {
+        atualizarContatos();
+    } else {
+        console.log(res.statusText)
+    }
 }

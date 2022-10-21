@@ -1,52 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+<html lang="en">
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body style="background-color: #dedede">
-    <section class="row mt-5">
-      <div class="col-md-4 offset-md-4">
-        <div class="card card-body">
-          <h2>Lista Telefonica (<span id="numeros">0</span>)</h2>
-          <hr />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="login.js" defer></script>
+</head>
 
-          <div class="col-9">
-            <input
-              id="input_nova_tarefa"
-              placeholder="Nova Tarefa"
-              type="text"
-              class="form-control"
-            />
-          </div>
-
-          <div class="col-3 d-grid">
-            <button class="btn btn-outline-primary" onclick="addContato()">
-              Pronto!
-            </button>
-          </div>
-
-          <hr />
-
-          <div id="tarefas">
-            <ul>
-              <li>id- nome - idade <button onclick="deletar('identificador')">Deletar</button onclick="atualizar('identificador')><button>Atualizar</button>
-            </li>
-            </ul>
-          </div>
+<body>
+    <form class="col-md-4 offset-md-4 card card-body row mt-5" id="name-form">
+        <div class="mb-3">
+            <label class="form-label">Usuário</label>
+            <input type="email" id="name" class="form-control">
         </div>
-      </div>
-    </section>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Senha</label>
+            <input type="password" id="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Entra</button>
+    </form>
 
-    <script src="eventos.js"></script>
-  </body>
+</body>
+
 </html>
