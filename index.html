@@ -1,30 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <script src="login.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="eventos.js" defer></script>
+  <script src="localStore.js" defer></script>
 </head>
 
 <body>
-    <form class="col-md-4 offset-md-4 card card-body row mt-5" id="name-form">
-        <div class="mb-3">
-            <label class="form-label">Usuário</label>
-            <input type="email" id="name" class="form-control">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Senha</label>
-            <input type="password" id="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Entra</button>
+  <section>
+    <form id="name-form">
+      <h2>Preencha o formulario para continuar:</h2>
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name" placeholder="Digite sua usuário" required>
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+      <input type="submit" value="Enviar">
     </form>
-
+    <div id="welcome">
+      <h2>Seja bem-vindo <span id="userName"></span>, sua lista telefonica(0)</h2>
+      <div id="ListaTelefonica">
+        <div>
+          <hr>
+          <input placeholder="Buscar Contato" type="text" /> <button>Buscar</button> <button onclick="addContato()">
+            Novo Contato
+          </button>
+          <hr>
+          <div id="tarefas">
+            <ul>
+              <li>id- nome - idade
+                <button onclick="deletar('identificador')">Deletar</button>
+                <button onclick="atualizar('identificador')">Atualizar </button>
+              </li>
+            </ul>
+          </div>
+          <hr>
+        </div>
+      </div>
+      <button id="logout">Sair</button>
+    </div>
+  </section>
 </body>
 
 </html>

@@ -46,7 +46,7 @@ async function atualizar(identificador) {
 
 }
 
-atualizarContatos();
+//atualizarContatos();
 
 async function atualizarContatos() {
     let resposta = await fetch('https://633867b7937ea77bfdbf9c86.mockapi.io/pessoa/')
