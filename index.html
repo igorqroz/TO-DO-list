@@ -21,8 +21,8 @@
       <input type="submit" value="Enviar">
     </form>
     <div id="welcome">
-      <h2>Seja bem-vindo <span id="userName"></span>, sua lista telefonica(0)</h2>
-      <div id="ListaTelefonica">
+      <h2>Seja bem-vindo <span id="userName"></span>, sua lista telefonica (<span id="numContatos"></span>)</h2>
+      <div>
         <div>
           <hr>
           <input placeholder="Buscar Contato" type="text" /> <button>Buscar</button> <button onclick="addContato()">
@@ -31,7 +31,7 @@
           <hr>
           <div id="tarefas">
             <ul>
-              <li>id- nome - idade
+              <li>Igor Queiroz - 23
                 <button onclick="deletar('identificador')">Deletar</button>
                 <button onclick="atualizar('identificador')">Atualizar </button>
               </li>
